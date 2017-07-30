@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/breakfast_Add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/breakfastRV"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/colorPrimaryDark"
+            android:elevation="1dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:src="@drawable/ic_add_black_24dp" />
+
+        <Button
+            android:id="@+id/break_fast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/colorPrimaryDark"
+            android:paddingLeft="20dp"
+            android:text="Breakfast"
+            android:textAlignment="textStart"
+            tools:ignore="HardcodedText"
+            android:layout_toStartOf="@+id/breakfast_Add"
+            android:layout_toLeftOf="@+id/breakfast_Add">
+
+        </Button>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/breakfastRV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/break_fast"
+            android:layout_weight="1"
+            tools:ignore="ObsoleteLayoutParam" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:layout_width="match_parent">
+
+
+        <ImageView
+            android:id="@+id/lunchADD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/lunchRV"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/colorPrimaryDark"
+            android:elevation="1dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:src="@drawable/ic_add_black_24dp" />
+
+
+        <Button
+            android:id="@+id/lunch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/colorPrimaryDark"
+            android:paddingLeft="20dp"
+            android:text="Lunch"
+            android:textAlignment="textStart"
+            tools:ignore="HardcodedText"
+            android:layout_toStartOf="@+id/lunchADD"
+            android:layout_toLeftOf="@+id/lunchADD">
+
+        </Button>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/lunchRV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/lunch"
+            android:layout_weight="1"
+            tools:ignore="ObsoleteLayoutParam" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:layout_width="match_parent">
+        <ImageView
+            android:id="@+id/dinner_Add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/dinnerRV"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/colorPrimaryDark"
+            android:elevation="1dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:src="@drawable/ic_add_black_24dp" />
+
+        <Button
+            android:id="@+id/dinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/colorPrimaryDark"
+            android:paddingLeft="20dp"
+            android:text="DINNER"
+            android:textAlignment="textStart"
+            tools:ignore="HardcodedText"
+            android:layout_toLeftOf="@+id/dinner_Add"
+            android:layout_toStartOf="@+id/dinner_Add">
+
+        </Button>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/dinnerRV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/dinner"
+            android:layout_weight="1"
+            tools:ignore="ObsoleteLayoutParam" />
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="My Profile" />
+        <item
+            android:id="@+id/nav_activity"
+            android:icon="@drawable/ic_menu_activity"
+            android:title="My Activity" />
+        <item
+            android:id="@+id/nav_diet"
+            android:icon="@drawable/ic_local_dining_black_24dp"
+            android:title="My Diet" />
+        <item
+            android:id="@+id/nav_steps"
+            android:icon="@drawable/icon_steps"
+            android:title="Steps" />
+        <item
+            android:id="@+id/nav_meal"
+            android:icon="@drawable/icon_meal_schedule"
+            android:title="Meal Scheduler" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_logout"
+            android:title="Logout" />
+
+        <!--<item
+            android:id="@+id/nav_calorie"
+            android:icon="@drawable/icon_calorie"
+            android:title="Calorie Burn" /> -->
+
+        <!--<item
+            android:id="@+id/nav_help"
+            android:icon="@drawable/icon_help"
+            android:title="Help" />-->
+    </group>
+
+</menu>

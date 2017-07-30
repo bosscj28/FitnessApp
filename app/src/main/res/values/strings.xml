@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Fitness</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_main_dashboard">Dashboard</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <style name="MyCustomTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+    </style>
+</resources>
