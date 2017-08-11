@@ -12,8 +12,7 @@ import shanks.com.fitness.Utils.Session;
 
 public class Dashboard extends AppCompatActivity {
 
-    LinearLayout linear_profile,linear_diet_chart,linear_steps,linear_meal_counter
-            ,linear_calorie_burn;
+    LinearLayout linear_diet_chart,linear_steps,linear_meal_counter,linear_health_blog;
     Session session;
 
     @Override
@@ -55,7 +54,14 @@ public class Dashboard extends AppCompatActivity {
         linear_meal_counter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Dashboard.this,MealTypeScheduler.class));
+                startActivity(new Intent(Dashboard.this,CalorieBurn.class));
+            }
+        });
+        linear_health_blog = (LinearLayout) findViewById(R.id.linear_health_blog);
+        linear_health_blog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Dashboard.this,Health_Blog.class));
             }
         });
         /*

@@ -2,14 +2,10 @@ package shanks.com.fitness.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -20,7 +16,6 @@ import shanks.com.fitness.R;
 import shanks.com.fitness.Utils.Session;
 import shanks.com.fitness.Utils.Utils;
 import shanks.com.fitness.model.Foods;
-import shanks.com.fitness.model.MealSchedulerModel;
 import shanks.com.fitness.model.Nutrients;
 
 public class DietChart extends AppCompatActivity {
@@ -33,6 +28,7 @@ public class DietChart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diet_chart);
         init();
+        Utils.ClearCalorieShared(getApplicationContext(),"Calorie","0");
     }
 
     private void init(){
@@ -129,13 +125,13 @@ public class DietChart extends AppCompatActivity {
                 Foods model = myFoods.get(i);
 
                 View child = getLayoutInflater().inflate(R.layout.day_layout, null);
-                TextView day_name = (TextView)child.findViewById(R.id.day_name);
+                TextView day_name = (TextView)child.findViewById(R.id.food_name);
                 day_name.setText("Name "+model.getName());
 
-                TextView weight = (TextView)child.findViewById(R.id.weight);
+                TextView weight = (TextView)child.findViewById(R.id.food_type);
                 weight.setText("Weight "+model.getWeight());
 
-                TextView measure = (TextView)child.findViewById(R.id.measure);
+                TextView measure = (TextView)child.findViewById(R.id.carb_type);
                 measure.setText("Measure "+model.getMeasure());
 
                 CheckBox check_food = (CheckBox)child.findViewById(R.id.check_food);

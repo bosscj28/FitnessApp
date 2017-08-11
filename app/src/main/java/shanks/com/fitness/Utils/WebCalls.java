@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import shanks.com.fitness.Interfaces.OnWebCall;
 import shanks.com.fitness.model.EditModel;
+import shanks.com.fitness.model.ForgotModel;
 import shanks.com.fitness.model.LoginModel;
 import shanks.com.fitness.model.SignUpModel;
 
@@ -26,6 +27,8 @@ public class WebCalls implements CallService.OnServiceCall{
     private final int CASE_SET_TOTAL_STEPS =3;
     private final int CASE_GET_MEAL_SCHEDULER =4;
     private final int CASE_EDIT =5;
+    private final int CASE_FORGOT =6;
+
     private boolean autoDismiss;
 
     public void showProgress(boolean autoDismiss){
@@ -69,6 +72,7 @@ public class WebCalls implements CallService.OnServiceCall{
     public void EditUser(EditModel model){
         doWebCall(CASE_EDIT,Utils.getEditUrl(model));
     }
+    public void ForgotPassword(ForgotModel model){doWebCall(CASE_EDIT,Utils.getForgotUrl(model));}
 
     public void getSteps(String custid){
         doWebCall(CASE_GET_TOTAL_STEPS,Utils.getAllStepsUrl(custid));
@@ -112,6 +116,8 @@ public class WebCalls implements CallService.OnServiceCall{
                 break;
             case CASE_EDIT:
                 handleEdit(response);
+            case CASE_FORGOT:
+                handleForgot(response);
         }
     }
 
@@ -123,6 +129,24 @@ public class WebCalls implements CallService.OnServiceCall{
             if(OnWebCall!=null){
                 if(_response.equalsIgnoreCase("200")){
                     OnWebCall.OnWebCallSuccess(response);
+                } else {
+                    OnWebCall.OnWebCallError(message);
+                }
+            }
+        }catch (Exception ex){
+            ex.printStackTrace();
+            if(OnWebCall!=null)
+                OnWebCall.OnWebCallError(ex.toString());
+        }
+    }
+    private void handleForgot(String response){
+        try{
+            JSONObject jobj = new JSONObject(response);
+            String _response= jobj.getString("response");
+            String message = jobj.getString("message");
+            if(OnWebCall!=null){
+                if(_response.equalsIgnoreCase("200")){
+                    OnWebCall.OnWebCallSuccess(message);
                 } else {
                     OnWebCall.OnWebCallError(message);
                 }

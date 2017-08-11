@@ -9,6 +9,7 @@ import android.view.Display;
 import android.view.WindowManager;
 
 import shanks.com.fitness.model.EditModel;
+import shanks.com.fitness.model.ForgotModel;
 import shanks.com.fitness.model.LoginModel;
 import shanks.com.fitness.model.SignUpModel;
 
@@ -31,19 +32,25 @@ public class Utils {
     public static String nu_meal = "nu_meal";//
     public static String userEmail = "userEmail";//
     public static String diet = "diet";
+    public static String bmi="bmi";
+    public static String calorie="calorie";
 
     public static String breakfast = "breakfast";
     public static String lunch = "lunch";
     public static String dinner = "dinner";
 
-    private static String BASE_URL = "http://siddharthvyas.in/fitness/";
+    private static String BASE_URL = "http://personaldietition.online/";
     private static String LOGIN = "login.php";
     private static String REGISTER = "register.php";
     private static String PROFILE = "profile.php";
+    private static String FORGOT = "forget_password.php";
     private static String GET_STEPS = "steps_count.php";
     private static String SET_STEPS = "steps.php";
+    private static String MEAL_SCHEDULER = "meal.php";
+    private static String BLOG_URL  = "";
+    public static String IMAGES_URL = "http://personaldietition.online/Images/";
 
-    private static String MEAL_SCHEDULER = "http://api.nal.usda.gov/ndb/nutrients/?format=json&api_key=yPwTBWaTOgZpXOpkdb1RuNT82pjrNXu21SPf5r3h&nutrients=205&nutrients=204&nutrients=208&nutrients=269";
+   // private static String MEAL_SCHEDULER = "http://api.nal.usda.gov/ndb/nutrients/?format=json&api_key=yPwTBWaTOgZpXOpkdb1RuNT82pjrNXu21SPf5r3h&nutrients=205&nutrients=204&nutrients=208&nutrients=269";
 
     public static final String NO_NET = "Internet is not available";
 
@@ -58,6 +65,29 @@ public class Utils {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(name, value);
         editor.commit();
+    }
+
+    // shared methods
+    public static void setCalorieShared(Context context, String name, String value) {
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(name, value);
+        editor.commit();
+    }
+
+    public static void ClearCalorieShared(Context context, String name, String value) {
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(name, value);
+        editor.commit();
+    }
+    public static String getCalorieShared(Context context, String name, String defaultValue) {
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        return prefs.getString(name, defaultValue);
+
     }
 
     public static void ClearShared(Context context) {
@@ -138,6 +168,10 @@ public class Utils {
                 +"&diseas="+model.getDisease()
                 +"&id="+model.getId();
     }
+    static String getForgotUrl(ForgotModel model){
+        return BASE_URL + FORGOT
+                +"?email="+model.getEmail();
+    }
 
     static String getLoginUrl(LoginModel model){
         return BASE_URL + LOGIN
@@ -157,6 +191,6 @@ public class Utils {
     }
 
     static String getMealScheduler(){
-        return MEAL_SCHEDULER;
+        return BASE_URL+MEAL_SCHEDULER;
     }
 }

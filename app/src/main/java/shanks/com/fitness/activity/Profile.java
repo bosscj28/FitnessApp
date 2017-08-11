@@ -276,6 +276,7 @@ public class Profile extends AppCompatActivity implements OnWebCall {
         }catch (Exception ex){
             ex.printStackTrace();
         }
+        startActivity(new Intent(Profile.this,MainDashboard.class));
         finish();
     }
 

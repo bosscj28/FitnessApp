@@ -135,6 +135,12 @@ public class Login extends AppCompatActivity implements OnWebCall{
                 String nu_meal = jobj.getString("nu_meal");
                 session.setNu_meal(nu_meal);
 
+                String bmi = jobj.getString("bmi");
+                session.setBmi(bmi);
+
+                String calorie = jobj.getString("calorie");
+                session.setCalorie(calorie);
+
                 session.setUserEmail(""+userNameString);
             }
 

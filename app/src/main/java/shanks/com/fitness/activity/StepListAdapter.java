@@ -50,8 +50,6 @@ public class StepListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-
-
         if (convertView == null) {
 
             LayoutInflater inflater = (LayoutInflater) LayoutInflater
@@ -59,10 +57,11 @@ public class StepListAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.item_steps, parent, false);
 
         }
+        TextView sr = (TextView) convertView.findViewById(R.id.textView6);
+        TextView Dates = (TextView) convertView.findViewById(R.id.textView2);
+        TextView Steps = (TextView) convertView.findViewById(R.id.textView3);
 
-        TextView Steps = (TextView) convertView.findViewById(R.id.textView2);
-        TextView Dates = (TextView) convertView.findViewById(R.id.textView3);
-
+        sr.setText(String.valueOf(position+1));
         Log.d("CJ PRINT","IN MODEL -"+stepItems.get(position).getSteps()+"-"+stepItems.get(position).getStepsDate());
         StepModel s = stepItems.get(position);
         Steps.setText(s.getSteps());

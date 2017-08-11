@@ -84,8 +84,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:ems="10"
-                        android:hint="Height (Feet Inches)"
-                        android:inputType="numberDecimal"
+                        android:hint="Height (Cms)"
+                        android:inputType="number"
                         android:padding="5dp" />
 
                     <EditText

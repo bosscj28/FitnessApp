@@ -21,8 +21,7 @@ import shanks.com.fitness.Utils.Session;
 public class MainDashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    LinearLayout linear_profile,linear_diet_chart,linear_steps,linear_meal_counter
-            ,linear_calorie_burn;
+    LinearLayout linear_diet_chart,linear_steps,linear_meal_counter,linear_health_blog;
     Session session;
 
     private void init(){
@@ -58,7 +57,14 @@ public class MainDashboard extends AppCompatActivity
         linear_meal_counter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainDashboard.this,MealTypeScheduler.class));
+                startActivity(new Intent(MainDashboard.this,CalorieBurn.class));
+            }
+        });
+        linear_health_blog = (LinearLayout) findViewById(R.id.linear_health_blog);
+        linear_health_blog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainDashboard.this,Health_Blog.class));
             }
         });
         /*
@@ -145,16 +151,24 @@ public class MainDashboard extends AppCompatActivity
         if (id == R.id.nav_profile) {
             // Handle the camera action
             startActivity(new Intent(MainDashboard.this,Profile.class));
-        } else if (id == R.id.nav_diet) {
+            finish();
+        }if (id == R.id.nav_activity) {
+            // Handle the camera action
+            startActivity(new Intent(MainDashboard.this, CalorieBurn.class));
+        }
+        else if (id == R.id.nav_diet) {
             startActivity(new Intent(MainDashboard.this,DietType.class));
         } else if (id == R.id.nav_steps) {
             startActivity(new Intent(MainDashboard.this,Steps.class));
-        } else if (id == R.id.nav_meal) {
-            startActivity(new Intent(MainDashboard.this,MealTypeScheduler.class));
-        } /*else if (id == R.id.nav_calorie) {
-            startActivity(new Intent(MainDashboard.this,CalorieBurn.class));
-        } */else if (id == R.id.nav_logout) {
-            session.ClearSession(MainDashboard.this);
+        } /*else if (id == R.id.nav_suggested) {
+            startActivity(new Intent(MainDashboard.this,SuggestedFood.class));
+        } */else if (id == R.id.nav_graph) {
+            startActivity(new Intent(MainDashboard.this,Graph.class));
+        }
+        else if (id == R.id.nav_help) {
+            startActivity(new Intent(MainDashboard.this,Health_Blog.class));
+        } else if (id == R.id.nav_logout) {
+            session.setUserId("");
             startActivity(new Intent(MainDashboard.this,Login.class));
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             drawer.closeDrawer(GravityCompat.START);

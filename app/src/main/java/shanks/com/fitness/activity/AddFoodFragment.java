@@ -86,7 +86,7 @@ public class AddFoodFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        v3 = inflater.inflate(R.layout.activity_meal_scheduler, container, false);
+        v3 = inflater.inflate(R.layout.activity_meal_scheduler_new, container, false);
         //message = getArguments().getString(EXTRA_MESSAGE);
         message =  ((DietType) getActivity()).dataforADDFood;
         int data = Integer.parseInt(message);
@@ -174,7 +174,7 @@ public class AddFoodFragment extends Fragment {
             @Override
             public void OnWebCallSuccess(String userFullData) {
                 try{
-                    parseMeals(userFullData);
+                   // parseMeals(userFullData);
                 }catch (Exception ex){
                     ex.printStackTrace();
                 }
@@ -221,18 +221,18 @@ public class AddFoodFragment extends Fragment {
                     if(i==100){break;}
                 }
 
-                randomNumber = rand.nextInt(foods.length) + 1;
+                randomNumber = rand.nextInt((foods.length-1)) + 1;
                 Log.d("CJ PRINT ","RANDOM "+randomNumber+" I "+i);
                 Foods model = foods[randomNumber];
 
                 View child = getActivity().getLayoutInflater().inflate(R.layout.day_layout,null);
-                TextView day_name = (TextView)child.findViewById(R.id.day_name);
+                TextView day_name = (TextView)child.findViewById(R.id.food_name);
                 day_name.setText("Name "+model.getName());
 
-                TextView weight = (TextView)child.findViewById(R.id.weight);
+                TextView weight = (TextView)child.findViewById(R.id.food_type);
                 weight.setText("Weight "+model.getWeight());
 
-                TextView measure = (TextView)child.findViewById(R.id.measure);
+                TextView measure = (TextView)child.findViewById(R.id.carb_type);
                 measure.setText("Measure "+model.getMeasure());
 
                 CheckBox check_food = (CheckBox)child.findViewById(R.id.check_food);

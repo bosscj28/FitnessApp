@@ -3,6 +3,6 @@
     <color name="colorPrimary">#5d3e1a</color>
     <color name="colorPrimaryDark">#b89b74</color>
     <color name="colorAccent">#000000</color>
-
     <color name="appBack">#feecd4</color>
+    <color name="blue">#03A9f4</color>
 </resources>

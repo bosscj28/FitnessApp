@@ -1,118 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/appBack"
     tools:context="shanks.com.fitness.activity.CalorieBurn">
+
     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent">
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
 
         <TextView
             android:id="@+id/meal_scheduler_text"
-            android:textColor="@android:color/black"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentTop="true"
-            android:textSize="25dp"
-            android:text="CALORIE BURN"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content">
-        </TextView>
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="CALORIE BURN"
+            android:textColor="@android:color/black"
+            android:textSize="25dp"></TextView>
 
         <LinearLayout
-            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:id="@+id/head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_below="@+id/meal_scheduler_text"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/meal_scheduler_text"
+                android:padding="10dp"
+                android:text="Sr No"
+                android:textColor="@android:color/black"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Dates"
+                android:textColor="@android:color/black"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="Calories"
+                android:textColor="@android:color/black"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/head"
+            android:orientation="vertical"
+            android:weightSum="1">
 
-            <TableRow
-                android:id="@+id/tabla_cabecera"
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/RCview"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></TableRow>
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentStart="false"
+                android:layout_below="@+id/head">
 
-            <TableLayout
-                android:id="@+id/tabla_cuerpo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TableRow
-                    android:id="@+id/tableRow1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:gravity="center"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/cell_shape"
-                        android:textColor="@android:color/black"
-                        android:padding="@dimen/activity_horizontal_margin"
-                        android:text="MONDAY"
-                        android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
-
-                    <TextView
-                        android:gravity="center"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/cell_shape"
-                        android:textColor="@android:color/black"
-                        android:padding="@dimen/activity_horizontal_margin"
-                        android:text="1500"
-                        android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
-
-                </TableRow>
-
-                <TableRow
-                    android:id="@+id/tableRow2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:gravity="center"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/cell_shape"
-                        android:textColor="@android:color/black"
-                        android:padding="@dimen/activity_horizontal_margin"
-                        android:text="TUESDAY"
-                        android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
-
-                    <TextView
-                        android:gravity="center"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/cell_shape"
-                        android:textColor="@android:color/black"
-                        android:padding="@dimen/activity_horizontal_margin"
-                        android:text="2000"
-                        android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
-
-                </TableRow>
-
-            </TableLayout>
-
-            <Button
-                android:background="@color/colorPrimaryDark"
-                android:text="SAVE"
-                android:id="@+id/save"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent">
-            </Button>
-
-
+            </android.support.v7.widget.RecyclerView>
         </LinearLayout>
 
     </RelativeLayout>
-</android.support.constraint.ConstraintLayout>
+
+</LinearLayout>
+

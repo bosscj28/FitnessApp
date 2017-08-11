@@ -24,6 +24,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.Flushable;
 import java.util.ArrayList;
 
 import shanks.com.fitness.R;
@@ -31,30 +32,34 @@ import shanks.com.fitness.Utils.Session;
 import shanks.com.fitness.Utils.Utils;
 import shanks.com.fitness.model.Foods;
 import shanks.com.fitness.model.MealSchedulerModel;
+import shanks.com.fitness.model.MealSchedulerNewModel;
 import shanks.com.fitness.model.Nutrients;
 
 public class dietAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     Context context;
     private LayoutInflater inflater;
-    ArrayList<Foods> myFoods;
+    ArrayList<MealSchedulerNewModel> myFoods;
     Session session;
     String name;
     MealSchedulerModel model;
+    TextView Cal,left,burn;
 
 
-
-    public dietAdapter(Context context, ArrayList<Foods> myFoods,String name) {
+    public dietAdapter(Context context, ArrayList<MealSchedulerNewModel> myFoods,String name,TextView cal,TextView left,TextView burn) {
         super();
         this.context = context;
         model = new MealSchedulerModel();
         session = Session.getSession(context);
         this.myFoods = myFoods;
         this.name = name;
+        this.Cal = cal;
         inflater= LayoutInflater.from(context);
+        this.left = left;
+        this.burn = burn;
         for(int i=0; i<myFoods.size(); i++)
         {
-            Log.d("ADAPTER FOODS","DATA OF FOODS "+myFoods.get(i).getName());
+            Log.d("ADAPTER FOODS","DATA OF FOODS "+myFoods.get(i).getFood());
         }
     }
 
@@ -74,10 +79,11 @@ public class dietAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         // Get current position of item in recyclerview to bind data and assign values from list
         MyHolder myHolder= (MyHolder) holder;
-        Foods current = myFoods.get(position);
+        MealSchedulerNewModel current = myFoods.get(position);
 
-        myHolder.Fname.setText(current.getName());
-        myHolder.Fcal.setText(current.getWeight());
+        myHolder.Fname.setText(current.getFood());
+
+        myHolder.Fcal.setText(String.valueOf(current.getEnergy()));
 
         //GET IMAGE FROM DB
     }
@@ -103,9 +109,23 @@ public class dietAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             removebtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    removebtn.setEnabled(false);
                     myFoods.remove(getAdapterPosition());
                     notifyItemRemoved(getAdapterPosition());
                     notifyItemRangeChanged(getAdapterPosition(),myFoods.size());
+                    String prev = Utils.getCalorieShared(context,"Calorie"+session.getUserId(),"0");
+                    Float value = Float.parseFloat(prev) - Float.parseFloat(Fcal.getText().toString());
+                    Utils.setCalorieShared(context,"Calorie"+session.getUserId(),String.valueOf(value));
+                    String prev2 = Utils.getCalorieShared(context,"Calorie"+session.getUserId(),"0");
+                    Cal.setText(prev2);
+                    Float burnCAL = Float.parseFloat(prev2) - Float.parseFloat(burn.getText().toString());
+                    if(burnCAL>0)
+                    {
+                        left.setText(String.valueOf(burnCAL));
+                    }else {
+                        left.setText("0");
+                    }
+
 
                     if(myFoods!=null){
                         if(name.equalsIgnoreCase(Utils.breakfast)){
@@ -116,13 +136,13 @@ public class dietAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                             session.setDinnerDiet(getString(myFoods));
                         }
                     }
-
+                removebtn.setEnabled(true);
                 }
             });
 
         }
     }
-    private String getString(ArrayList<Foods> obj){
+    private String getString(ArrayList<MealSchedulerNewModel> obj){
         Gson gson = new Gson();
         return gson.toJson(obj);
     }

@@ -32,11 +32,8 @@ public class DietType extends AppCompatActivity implements Communicator {
 
         dataforADDFood = String.valueOf(data);
         init();
-        /*AddFoodFragment frag = new AddFoodFragment();
-        frag.change(data,DietType.this);*/
+
     }
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +74,7 @@ public class DietType extends AppCompatActivity implements Communicator {
     private List<Fragment> getFragments() {
         List<Fragment> fList = new ArrayList<Fragment>();
         fList.add(MydietFragment.newInstance("nothing"));
-        fList.add(AddFoodFragment.newInstance(dataforADDFood));
+        fList.add(AddFoodFragment2.newInstance(dataforADDFood));
 
         return fList;
     }

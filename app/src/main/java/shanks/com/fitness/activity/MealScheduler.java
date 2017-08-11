@@ -13,8 +13,6 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 
 import shanks.com.fitness.Interfaces.OnWebCall;
@@ -147,13 +145,13 @@ public class MealScheduler extends AppCompatActivity {
                 Foods model = foods[i];
 
                 View child = getLayoutInflater().inflate(R.layout.day_layout, null);
-                TextView day_name = (TextView)child.findViewById(R.id.day_name);
+                TextView day_name = (TextView)child.findViewById(R.id.food_name);
                 day_name.setText("Name "+model.getName());
 
-                TextView weight = (TextView)child.findViewById(R.id.weight);
+                TextView weight = (TextView)child.findViewById(R.id.food_type);
                 weight.setText("Weight "+model.getWeight());
 
-                TextView measure = (TextView)child.findViewById(R.id.measure);
+                TextView measure = (TextView)child.findViewById(R.id.carb_type);
                 measure.setText("Measure "+model.getMeasure());
 
                 CheckBox check_food = (CheckBox)child.findViewById(R.id.check_food);

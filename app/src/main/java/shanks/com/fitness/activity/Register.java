@@ -175,6 +175,8 @@ public class Register extends AppCompatActivity implements OnWebCall{
     @Override
     public void OnWebCallSuccess(String userFullData) {
         Logger.showToast(Register.this,userFullData);
+        startActivity(new Intent(Register.this,Login.class));
+        finish();
     }
 
     @Override

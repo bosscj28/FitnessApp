@@ -9,7 +9,9 @@ import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,6 +21,7 @@ import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -47,7 +50,7 @@ public class Steps extends AppCompatActivity implements SensorEventListener, Ste
     private Sensor accel;
     private static final String TEXT_NUM_STEPS = " STEPS";//:
     private static final String TEXT_TOTAL_STEPS = " TOTAL STEPS : ";
-    private int numSteps;
+    private int numSteps,totalsteps=0;
     Session session;
     ListView listSteps;
     StepModel stepModel;
@@ -73,6 +76,9 @@ public class Steps extends AppCompatActivity implements SensorEventListener, Ste
             simpleStepDetector.registerListener(this);
         }
         listSteps = (ListView)findViewById(R.id.listSteps) ;
+        LayoutInflater layoutinflater = getLayoutInflater();
+        ViewGroup header = (ViewGroup)layoutinflater.inflate(R.layout.item_steps,listSteps,false);
+        listSteps.addHeaderView(header);
         steps_text = (TextView)findViewById(R.id.steps_text);
         stepModel = new StepModel();
 
@@ -154,12 +160,88 @@ public class Steps extends AppCompatActivity implements SensorEventListener, Ste
                         Log.d("CJ ","CJ PRINT IN"+StepList.get(i).getSteps());
 
                     }
-                    for(int i=0;i<StepList.size();i++){
-                        Log.d("CJ ","CJ PRINT IN"+StepList.get(i).getSteps());
-                    }
+                        List<StepModel> StepList2 = new ArrayList<StepModel>();
+                        int steps = 0;
+                        SimpleDateFormat sdf2 = new SimpleDateFormat("dd-MM-yyyy");
+                          String stepString="";
+                       // Log.d("ASHU","...."+StepList.size());
+                        int i=0,j;
+                        while(i<StepList.size())
+                        {
+                            int k=i;
+                            steps=0;
+                            StepModel s = new StepModel();
+                            for(j=k;j<StepList.size();j++,k++){
 
-                    adapter = new StepListAdapter(Steps.this,StepList);
+                                Date Di,Dj;
+                                Di = StepList.get(i).getStepsDate();
+                                Dj = StepList.get(j).getStepsDate();
+
+                                String sdi = sdf2.format(Di);
+                                String sdj = sdf2.format(Dj);
+
+                                if(sdi.equals(sdj)) {
+                                    steps = steps + Integer.parseInt(StepList.get(j).getSteps());
+                                    stepString = String.valueOf(steps);
+
+                                    if (j == (StepList.size()-1)) {
+                                        s.setSteps(stepString);
+                                        s.setStepsDate(StepList.get(i).getStepsDate());
+                                        StepList2.add(s);
+                                        break;
+                                    }
+                                }
+                                else
+                                {
+                                    s.setSteps(stepString);
+                                    s.setStepsDate(StepList.get(i).getStepsDate());
+                                    StepList2.add(s);
+                                    i=k-1;
+
+                                    break;
+                                }
+                            }
+                            if (j == (StepList.size()-1))
+                                break;
+                            i++;
+                        }
+
+
+
+                       /* for(int A=0;i<StepList2.size();A++) {
+                            Log.d("CJ ", "CJ PRINT IN 2 " + StepList2.get(A).getStepsDate());
+                            Date STEPDATE = StepList2.get(i).getStepsDate();
+                            String SD = sdf2.format(STEPDATE);
+
+                            if(STEPDATE.equals(SD))
+                            {
+                                totalsteps = totalsteps + Integer.parseInt(StepList2.get(i).getSteps());
+
+                            }
+
+                        }*/
+                    Date TodayDate = new Date();
+                    String TD = sdf2.format(TodayDate);
+
+                    for(int A=0;A<StepList2.size();A++)
+                    {
+                        Log.d("CJ ", "CJ PRINT IN 2 " + StepList2.get(A).getStepsDate());
+                        Date STEPDATE = StepList2.get(A).getStepsDate();
+                        String SD = sdf2.format(STEPDATE);
+
+                        if(TD.equals(SD))
+                        {
+                            totalsteps = totalsteps + Integer.parseInt(StepList2.get(A).getSteps());
+
+                        }
+
+                    }
+                        steps_text.setText(steps_text.getText()+String.valueOf(totalsteps));
+
+
+                    adapter = new StepListAdapter(Steps.this,StepList2);
                     listSteps.setAdapter(adapter);
+
                 }catch (Exception ex){
                     ex.printStackTrace();
                 }

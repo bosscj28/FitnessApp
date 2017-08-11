@@ -14,14 +14,22 @@
             android:id="@+id/nav_diet"
             android:icon="@drawable/ic_local_dining_black_24dp"
             android:title="My Diet" />
+        <!--<item
+            android:id="@+id/nav_suggested"
+            android:icon="@drawable/ic_room_service_black_24dp"
+            android:title="Suggested Food" />-->
         <item
             android:id="@+id/nav_steps"
             android:icon="@drawable/icon_steps"
             android:title="Steps" />
         <item
-            android:id="@+id/nav_meal"
-            android:icon="@drawable/icon_meal_schedule"
-            android:title="Meal Scheduler" />
+            android:id="@+id/nav_graph"
+            android:icon="@drawable/ic_timeline_black_24dp"
+            android:title="Health Graph" />
+        <item
+            android:id="@+id/nav_help"
+            android:icon="@drawable/icon_help"
+            android:title="Help Blog" />
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_logout"

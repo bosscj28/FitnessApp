@@ -84,6 +84,22 @@ public class Session {
         Utils.setShared(context,Utils.sex,sex);
     }
 
+    public String getBmi() {
+        return Utils.getShared(context,Utils.bmi,"");
+    }
+
+    public void setBmi(String Bmi) {
+        Utils.setShared(context,Utils.bmi,Bmi);
+    }
+
+    public String getCalorie() {
+        return Utils.getShared(context,Utils.calorie,"");
+    }
+
+    public void setCalorie(String calorie) {
+        Utils.setShared(context,Utils.calorie,calorie);
+    }
+
 
     public String getAllergy() {
         return Utils.getShared(context,Utils.allergy,"");
@@ -139,26 +155,26 @@ public class Session {
 //    private String dinnerDiet = "";
 
     public String getBreakfastDiet() {
-        return Utils.getShared(context,Utils.breakfast,"");
+        return Utils.getShared(context,Utils.breakfast+getUserId(),"");
     }
 
     public void setBreakfastDiet(String breakfastDiet) {
-        Utils.setShared(context,Utils.breakfast,breakfastDiet);
+        Utils.setShared(context,Utils.breakfast+getUserId(),breakfastDiet);
     }
 
     public String getLunchDiet() {
-        return Utils.getShared(context,Utils.lunch,"");
+        return Utils.getShared(context,Utils.lunch+getUserId(),"");
     }
 
     public void setLunchDiet(String lunchDiet) {
-        Utils.setShared(context,Utils.lunch,lunchDiet);
+        Utils.setShared(context,Utils.lunch+getUserId(),lunchDiet);
     }
 
     public String getDinnerDiet() {
-        return Utils.getShared(context,Utils.dinner,"");
+        return Utils.getShared(context,Utils.dinner+getUserId(),"");
     }
 
     public void setDinnerDiet(String dinnerDiet) {
-        Utils.setShared(context,Utils.dinner,dinnerDiet);
+        Utils.setShared(context,Utils.dinner+getUserId(),dinnerDiet);
     }
 }
